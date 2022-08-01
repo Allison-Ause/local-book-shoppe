@@ -5,6 +5,7 @@
 
 DROP table if exists books;
 Drop table if exists authors;
+DROP table if exists books_authors;
 
 CREATE table books (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -17,7 +18,8 @@ INSERT INTO books (title, released) VALUES
 ('The Stars Are Legion', 2018),
 ('The Midnight Library', 2020),
 ('The Comfort Book', 2022),
-('The Love Hypothesis', 2021);
+('The Love Hypothesis', 2021),
+('Good Omens', 2000);
 
 
 CREATE table authors (
@@ -30,4 +32,24 @@ CREATE table authors (
 INSERT INTO authors (name, dob, pod) VALUES
 ('Katherine Hurley', '1986-05-05', 'Florida'), 
 ('Matt Haig', '1957-06-06', 'England'),
-('Ali Hazelwood', '1998-07-07', 'Chicago');
+('Ali Hazelwood', '1998-07-07', 'Chicago'),
+('Neil Gaiman', '1965-08-08', 'London'),
+('Terry Prachet', '1945-09-09', 'UK');
+
+
+CREATE table books_authors (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  book_id INT,
+  author_id INT,
+  FOREIGN KEY (book_id) REFERENCES books(id),
+  FOREIGN KEY (author_id) REFERENCES authors(id)
+);
+
+INSERT INTO books_authors(book_id, author_id) VALUES
+(1, 1),
+(2, 1),
+(3, 2),
+(4, 2),
+(5, 3),
+(6, 4),
+(6, 5);
