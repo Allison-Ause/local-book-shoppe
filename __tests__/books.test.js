@@ -17,12 +17,16 @@ describe('books routes', () => {
   });
   it('/books/:id returns title, released and nested authors', async () => {
     const res = await request(app).get('/books/6');
-    expect(res.body.length).toEqual(7);
-    const goodOmens = res.body.find((x) => x.id === '6');
-    expect(goodOmens).toHaveProperty('title', 'Good Omens');
-    expect(goodOmens).toHaveProperty('released', 2000);
-    expect(goodOmens.authors[0]).toHaveProperty('id');
-    expect(goodOmens.authors[0]).toHaveProperty('name');
+    console.log('Res.body', res.body);
+    expect(res.body).toMatchObject({
+      id: '6',
+      title: 'Good Omens',
+      released: 2000,
+      authors: [
+        { id: 4, name: 'Neil Gaiman' },
+        { id: 5, name: 'Terry Prachet' },
+      ],
+    });
   });
 });
 afterAll(() => {
