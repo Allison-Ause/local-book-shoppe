@@ -31,4 +31,7 @@ describe('books routes', () => {
       ],
     });
   });
+  afterAll(() => {
+    pool.end();
+  });
 });
