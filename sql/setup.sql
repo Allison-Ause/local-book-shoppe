@@ -3,9 +3,9 @@
 
 -- TABLES = Books, Authors, books_authors
 
+DROP table if exists books_authors;
 DROP table if exists books;
 Drop table if exists authors;
-DROP table if exists books_authors;
 
 CREATE table books (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
