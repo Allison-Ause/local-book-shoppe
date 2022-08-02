@@ -11,6 +11,19 @@ describe('author routes', () => {
     const res = await request(app).get('/authors');
     expect(res.body.length === 5);
   });
+  it('/authors/:id returns name, dob, pod and nested books', async () => {
+    const res = await request(app).get('/authors/1');
+    console.log('Res.body', res.body);
+    expect(res.body).toMatchObject({
+      id: '6',
+      title: 'Good Omens',
+      released: 2000,
+      authors: [
+        { id: 4, name: 'Neil Gaiman' },
+        { id: 5, name: 'Terry Prachet' },
+      ],
+    });
+  });
   // it('/authors/:id returns that author info with nested book data', async () => {
   //   const res = await request(app).get('/authors/1');
   //   const kameron = res.body.find((x) => x.id === 1);
