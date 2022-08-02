@@ -18,4 +18,17 @@ describe('books routes', () => {
   afterAll(() => {
     pool.end();
   });
+  it('/books/:id returns title, released and nested authors', async () => {
+    const res = await request(app).get('/books/1');
+    expect(res.body).toEqual({
+      id: '1',
+      title: 'Gods War',
+      authors: [
+        {
+          id: '1',
+          name: 'Kameron Hurley',
+        },
+      ],
+    });
+  });
 });

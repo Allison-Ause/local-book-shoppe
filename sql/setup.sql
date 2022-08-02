@@ -30,7 +30,7 @@ CREATE table authors (
 );
 
 INSERT INTO authors (name, dob, pod) VALUES
-('Katherine Hurley', '1986-05-05', 'Florida'), 
+('Kameron Hurley', '1986-05-05', 'Florida'), 
 ('Matt Haig', '1957-06-06', 'England'),
 ('Ali Hazelwood', '1998-07-07', 'Chicago'),
 ('Neil Gaiman', '1965-08-08', 'London'),
