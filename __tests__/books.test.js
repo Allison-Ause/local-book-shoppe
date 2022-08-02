@@ -16,14 +16,14 @@ describe('books routes', () => {
     });
   });
   it('/books/:id returns title, released and nested authors', async () => {
-    const res = await request(app).get('/authors/6');
+    const res = await request(app).get('/books/6');
     expect(res.body).toMatchObject({
-      name: 'Kameron Hurley',
-      dob: expect.any(String),
-      pob: 'Florida',
-      books: [
-        { id: 1, title: 'Gods War', released: 2004 },
-        { id: 2, title: 'Stars Are Legion', released: 2018 },
+      id: '6',
+      title: 'Good Omens',
+      released: 2000,
+      authors: [
+        { id: 4, name: 'Neil Gaiman' },
+        { id: 5, name: 'Terry Prachet' },
       ],
     });
   });
