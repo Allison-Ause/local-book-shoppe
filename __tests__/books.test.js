@@ -10,9 +10,9 @@ describe('books routes', () => {
   it('/books returns a list of pure books table data', async () => {
     const res = await request(app).get('/books');
     expect(res.body[0]).toMatchObject({
-      id: expect.any(Number),
+      id: expect.any(String),
       title: expect.any(String),
-      released: expect.any(Date),
+      released: expect.any(Number),
     });
   });
   afterAll(() => {
