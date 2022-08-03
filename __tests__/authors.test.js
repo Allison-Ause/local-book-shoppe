@@ -39,6 +39,25 @@ describe('author routes', () => {
       pod: expect.any(String),
     });
   });
+  it('#POST /authors/ adds new author and links to books', async () => {
+    const res = await request(app)
+      .post('/authors/')
+      .send({
+        name: 'Tessa Farmiga',
+        dob: '1999-07-07',
+        pod: 'Charleston',
+        booksId: [5],
+      });
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({
+      name: expect.any(String),
+      dob: expect.any(String),
+      pod: expect.any(String),
+      booksId: expect.any(Array),
+    });
+    const authorRes = await request(app).get(`/authors/${res.body.id}`);
+    expect(authorRes.body.books.length).toBe(1);
+  });
 });
 afterAll(() => {
   pool.end();

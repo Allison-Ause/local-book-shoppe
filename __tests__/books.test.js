@@ -69,6 +69,3 @@ describe('books routes', () => {
 afterAll(() => {
   pool.end();
 });
-
-// response of the post method will only be the row added to the Books table. No author info
-// do a second request to getBooksById to get the author data from the new book
