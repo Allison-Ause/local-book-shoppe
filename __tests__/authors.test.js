@@ -37,6 +37,7 @@ describe('author routes', () => {
       name: expect.any(String),
       dob: expect.any(String),
       pod: expect.any(String),
+      books: expect.any(Array),
     });
   });
   it('#POST /authors/ adds new author and links to books', async () => {
@@ -46,15 +47,18 @@ describe('author routes', () => {
         name: 'Tessa Farmiga',
         dob: '1999-07-07',
         pod: 'Charleston',
-        booksId: [5],
+        bookIds: [5],
       });
     expect(res.status).toBe(200);
+    console.log('res.body from id test is:', res.body);
     expect(res.body).toEqual({
+      id: expect.any(String),
       name: expect.any(String),
       dob: expect.any(String),
       pod: expect.any(String),
-      booksId: expect.any(Array),
+      books: expect.any(Array),
     });
+
     const authorRes = await request(app).get(`/authors/${res.body.id}`);
     expect(authorRes.body.books.length).toBe(1);
   });
