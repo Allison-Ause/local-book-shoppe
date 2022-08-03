@@ -37,7 +37,6 @@ describe('author routes', () => {
       name: expect.any(String),
       dob: expect.any(String),
       pod: expect.any(String),
-      books: expect.any(Array),
     });
   });
   it('#POST /authors/ adds new author and links to books', async () => {
@@ -56,7 +55,6 @@ describe('author routes', () => {
       name: expect.any(String),
       dob: expect.any(String),
       pod: expect.any(String),
-      books: expect.any(Array),
     });
 
     const authorRes = await request(app).get(`/authors/${res.body.id}`);
