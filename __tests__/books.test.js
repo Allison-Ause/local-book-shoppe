@@ -38,11 +38,11 @@ describe('books routes', () => {
     };
     const res = await request(app).post('/books/').send(book);
     expect(res.status).toBe(200);
-    console.log('res.body:', res.body);
     expect(res.body).toEqual({
       id: expect.any(String),
       title: expect.any(String),
       released: expect.any(Number),
+      authors: expect.any(Array),
     });
   });
 
@@ -53,7 +53,7 @@ describe('books routes', () => {
         id: '7',
         title: 'Neverwhere',
         released: 2002,
-        author_id: [4],
+        authorIds: [4],
       });
     expect(res.status).toBe(200);
     console.log('res.body in test:', res.body);
