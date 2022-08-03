@@ -33,7 +33,6 @@ describe('books routes', () => {
 
   it('#POST /books/ add new book', async () => {
     const book = {
-      id: '7',
       title: 'Neverwhere',
       released: 2002,
     };
@@ -47,19 +46,20 @@ describe('books routes', () => {
     });
   });
 
-  it.skip('#POST /books/ adds new book and links to authors', async () => {
+  it('#POST /books/ adds new book and links to authors', async () => {
     const res = await request(app)
       .post('/books/')
       .send({
         id: '7',
         title: 'Neverwhere',
         released: 2002,
-        authorIds: [4],
+        author_id: [4],
       });
     expect(res.status).toBe(200);
+    console.log('res.body in test:', res.body);
     expect(res.body).toEqual({
-      id: expect.any('String'),
-      title: expect.any('String'),
+      id: expect.any(String),
+      title: expect.any(String),
       released: expect.any(Number),
       authors: expect.any(Array),
     });
