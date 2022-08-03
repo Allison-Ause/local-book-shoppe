@@ -13,7 +13,6 @@ describe('author routes', () => {
   });
   it('/authors/:id returns title, released and nested authors', async () => {
     const res = await request(app).get('/authors/1');
-    console.log('res.body is', res.body);
     expect(res.body).toMatchObject({
       id: '1',
       name: 'Kameron Hurley',
