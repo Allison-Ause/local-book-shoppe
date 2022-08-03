@@ -21,7 +21,6 @@ describe('books routes', () => {
   it('/books/:id returns title, released and nested authors', async () => {
     const res = await request(app).get('/books/6');
     expect(res.body).toMatchObject({
-      id: '6',
       title: 'Good Omens',
       released: 2000,
       authors: [

@@ -14,7 +14,6 @@ describe('author routes', () => {
   it('/authors/:id returns title, released and nested authors', async () => {
     const res = await request(app).get('/authors/1');
     expect(res.body).toMatchObject({
-      id: '1',
       name: 'Kameron Hurley',
       dob: expect.any(String),
       pod: 'Florida',
@@ -49,7 +48,6 @@ describe('author routes', () => {
         bookIds: [5],
       });
     expect(res.status).toBe(200);
-    console.log('res.body from id test is:', res.body);
     expect(res.body).toEqual({
       id: expect.any(String),
       name: expect.any(String),
