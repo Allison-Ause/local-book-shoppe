@@ -24,6 +24,21 @@ describe('author routes', () => {
       ],
     });
   });
+  it('#POST /authors/ adds new author', async () => {
+    const author = {
+      name: expect.any(String),
+      dob: expect.any(Number),
+      pod: expect.any(String),
+    };
+    const res = await request(app).post('/authors/').send(author);
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({
+      id: expect.any(String),
+      name: expect.any(String),
+      dob: expect.any(Number),
+      pod: expect.any(String),
+    });
+  });
 });
 afterAll(() => {
   pool.end();
