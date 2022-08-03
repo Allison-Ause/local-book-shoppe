@@ -26,16 +26,16 @@ describe('author routes', () => {
   });
   it('#POST /authors/ adds new author', async () => {
     const author = {
-      name: expect.any(String),
-      dob: expect.any(Number),
-      pod: expect.any(String),
+      name: 'Tessa Farmiga',
+      dob: '1999-07-07',
+      pod: 'Charleston',
     };
     const res = await request(app).post('/authors/').send(author);
     expect(res.status).toBe(200);
     expect(res.body).toEqual({
       id: expect.any(String),
       name: expect.any(String),
-      dob: expect.any(Number),
+      dob: expect.any(String),
       pod: expect.any(String),
     });
   });
